@@ -4,14 +4,7 @@
 	<meta name="generator" content="Hugo 0.147.5">
     <meta charSet="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="/css/style.css" data-precedence="next"/>
-    <script src="/js/fd9d1056-c261701f6dea3316.js" async=""></script>
-    <script src="/js/23-6b951910d740c2cb.js" async=""></script>
-    <script src="/js/app/main-app.js" async=""></script>
-    <script src="/js/173-3c11a943ed278319.js" async=""></script>
-    <script src="/js/424-e53f9ba17a1bfd5e.js" async=""></script>
-    <script src="/js/191-ef83c97d7bdb0ce3.js" async=""></script>
-    <script src="/js/app/page-3e4558b163e69ce4.js" async=""></script>
+    <link rel="stylesheet" href="./css/style.css" data-precedence="next"/>
     <title>Sang Sinh NGUYEN - Backend Engineer</title>
     <meta name="description" content="I&#x27;m Sang Sinh NGUYEN. Backend engineer at FPT Corporation. I am passionate about reactive micro-service, multiple streaming processing and a little other things about develop service cycle."/>
     <meta property="og:title" content="Sang Sinh NGUYEN - Backend engineer"/>
@@ -20,9 +13,7 @@
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta name="twitter:title" content="Sang Sinh NGUYEN - Software engineer"/>
-    <meta name="twitter:description" content="I&#x27;m Sang Sinh NGUYEN. Software engineer at Hugging Face. I am passionate about machine learning, low-level intricacies and all other things about computer."/>
-    <meta name="twitter:image" content="https://ngxson.com/cover.jpg"/>
-    <script src="/js/polyfills.js" nomodule=""></script>
+    <meta name="twitter:description" content="I&#x27;m Sang Sinh NGUYEN. Backend engineer at FPT Corporation. I am passionate about reactive micro-service, multiple streaming processing and a little other things about develop service cycle."/>
 </head>
 <body>
 <div class="bg-fixed-due-to-ios-not-supported"></div>
@@ -35,9 +26,21 @@
                         <div class="flex flex-col items-center justify-center pt-50 hide-scrollbar h-[80vh]">
                             <div class="flex flex-col items-center pt-10 md:pt-50">
                                 <div class="avatar">
-                                    <figure class="w-32 h-32 xl:w-44 xl:h-44 rounded-full shadow-custom">
-                                        <img alt="Profile picture" loading="lazy" decoding="async" data-nimg="fill" class="rounded-full" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="100vw" srcSet="/images/bio/ghibli-avatar-2.png 640w, /images/bio/ghibli-avatar-2.png 750w, /images/bio/ghibli-avatar-2.png 828w, /images/bio/ghibli-avatar-2.png 1080w, /images/bio/ghibli-avatar-2.png 1200w, /images/bio/ghibli-avatar-2.png 1920w, /images/bio/ghibli-avatar-2.png 2048w, /images/bio/ghibli-avatar-2.png 3840w" src="/images/bio/ghibli-avatar-2.png"/>
+                                    <figure class="group w-32 h-32 xl:w-44 xl:h-44 rounded-full shadow-custom overflow-hidden relative">
+                                        <div class="flipper w-full h-full relative">
+                                            <img
+                                                    src="./images/bio/ghibli-avatar-2.png"
+                                                    alt="Profile picture"
+                                                    class="front rounded-full absolute inset-0 w-full h-full object-cover"
+                                            />
+                                            <img
+                                                    src="./images/bio/avatar.jpg"
+                                                    alt="Profile hover picture"
+                                                    class="back rounded-full absolute inset-0 w-full h-full object-cover"
+                                            />
+                                        </div>
                                     </figure>
+
                                 </div>
                                 <div class="font-bold pt-5 pb-4 text-xl text-on-bg">Hello! I&#x27;m</div>
                                 <section>
@@ -96,7 +99,7 @@
                                                         <div class="card-body p-5 ">
                                                             <ul>
                                                                 <li>
-                                                                    My Curriculum Vitae: <a href="/NguyenSangSinh.pdf" target="">Click here</a>
+                                                                    My Curriculum Vitae: <a href="./NguyenSangSinh.pdf" target="">Click here</a>
                                                                 </li>
                                                                 <li>Nationality: Vietnamese</li>
                                                                 <li>Live in: Ho Chi Minh City</li>
@@ -107,7 +110,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    Biography: <a href="/" target="">View here</a>
+                                                                    Biography: <a href="./" target="">View here</a>
                                                                 </li>
                                                                 <li>Hobbies: Running, Guitar</li>
                                                             </ul>
