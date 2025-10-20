@@ -5,6 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="./css/style.css" data-precedence="next"/>
     <title>Flower - cho em bé Như Ý</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        article {
+            margin: 0;
+            padding: 0;
+        }
+
+        svg {
+            display: block;
+            position: relative;
+            z-index: 10;
+            shape-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .content-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        /* Blinking animation */
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)); }
+        }
+
+        @keyframes petal-glow {
+            0%, 100% { opacity: 0.92; }
+            50% { opacity: 1; }
+        }
+
+        .sparkle {
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        .petal {
+            transition: opacity 0.3s ease;
+        }
+
+        .flower-center {
+            transition: filter 0.3s ease;
+        }
+    </style>
     <meta name="description" content="Flower - cho em bé Như Ý"/>
     <meta property="og:title" content="Flower - cho em bé Như Ý"/>
     <meta property="og:description" content="A beautiful flower illustration"/>
@@ -23,11 +83,11 @@
                     <main class="main-content">
                         <div class="content-container" style="padding: 2rem; max-width: 1200px; margin: 0 auto; text-align: center;">
                             <div style="margin-bottom: 2rem;">
-                                <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: #333;">Flower - cho em bé Như Ý</h1>
+                                <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: #333;">Hoa ly cho em bé Như Ý</h1>
                             </div>
 
-                            <div style="display: flex; justify-content: center; align-items: center;">
-<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+                            <div style="display: flex; justify-content: center; align-items: center; min-height: 500px;">
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" style="width: 400px; height: 500px; max-width: 100%;" shape-rendering="geometricPrecision">
     <defs>
         <!-- Gradient cho bầu trời -->
         <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -56,12 +116,22 @@
         </radialGradient>
 
         <!-- Bóng mềm -->
-        <filter id="softShadow">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+        <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+            <feOffset dx="0" dy="2" result="offsetblur"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.3"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
         </filter>
 
-        <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+            <feFlood flood-color="#FFE6E0" flood-opacity="0.5" result="color"/>
+            <feComposite in="color" in2="blur" operator="in" result="coloredBlur"/>
             <feMerge>
                 <feMergeNode in="coloredBlur"/>
                 <feMergeNode in="SourceGraphic"/>
@@ -103,36 +173,36 @@
 
     <!-- 6 cánh hoa xếp tròn - kiểu Ghibli mềm mại -->
     <!-- Cánh trên -->
-    <ellipse cx="200" cy="200" rx="32" ry="55" fill="url(#petalGradient)"
-             filter="url(#glow)" opacity="0.95" stroke="#E8C4B8" stroke-width="0.5"/>
+    <ellipse class="petal" cx="200" cy="200" rx="32" ry="55" fill="url(#petalGradient)"
+             filter="url(#glow)" opacity="0.95" stroke="none"/>
 
     <!-- Cánh trên phải -->
-    <ellipse cx="245" cy="225" rx="32" ry="55" fill="url(#petalGradient)"
-             filter="url(#glow)" opacity="0.95" stroke="#E8C4B8" stroke-width="0.5"
+    <ellipse class="petal" cx="245" cy="225" rx="32" ry="55" fill="url(#petalGradient)"
+             filter="url(#glow)" opacity="0.95" stroke="none"
              transform="rotate(60 245 225)"/>
 
     <!-- Cánh dưới phải -->
-    <ellipse cx="245" cy="315" rx="32" ry="55" fill="url(#petalGradient)"
-             filter="url(#glow)" opacity="0.92" stroke="#E8C4B8" stroke-width="0.5"
+    <ellipse class="petal" cx="245" cy="315" rx="32" ry="55" fill="url(#petalGradient)"
+             filter="url(#glow)" opacity="0.92" stroke="none"
              transform="rotate(120 245 315)"/>
 
     <!-- Cánh dưới -->
-    <ellipse cx="200" cy="340" rx="32" ry="55" fill="url(#petalGradient)"
-             filter="url(#glow)" opacity="0.90" stroke="#E8C4B8" stroke-width="0.5"/>
+    <ellipse class="petal" cx="200" cy="340" rx="32" ry="55" fill="url(#petalGradient)"
+             filter="url(#glow)" opacity="0.90" stroke="none"/>
 
     <!-- Cánh dưới trái -->
-    <ellipse cx="155" cy="315" rx="32" ry="55" fill="url(#petalGradient)"
-             filter="url(#glow)" opacity="0.92" stroke="#E8C4B8" stroke-width="0.5"
+    <ellipse class="petal" cx="155" cy="315" rx="32" ry="55" fill="url(#petalGradient)"
+             filter="url(#glow)" opacity="0.92" stroke="none"
              transform="rotate(-120 155 315)"/>
 
     <!-- Cánh trên trái -->
-    <ellipse cx="155" cy="225" rx="32" ry="55" fill="url(#petalGradient)"
-             filter="url(#glow)" opacity="0.95" stroke="#E8C4B8" stroke-width="0.5"
+    <ellipse class="petal" cx="155" cy="225" rx="32" ry="55" fill="url(#petalGradient)"
+             filter="url(#glow)" opacity="0.95" stroke="none"
              transform="rotate(-60 155 225)"/>
 
     <!-- Tâm hoa -->
-    <circle cx="200" cy="270" r="28" fill="url(#centerGradient)"
-            filter="url(#softShadow)" stroke="#E8D4B8" stroke-width="1" opacity="0.95"/>
+    <circle class="flower-center" cx="200" cy="270" r="28" fill="url(#centerGradient)"
+            filter="url(#softShadow)" stroke="none" opacity="0.95"/>
 
     <!-- Nhị hoa (stamens) mềm mại -->
     <g stroke="#D4B8A0" stroke-width="1.5" opacity="0.7">
@@ -151,9 +221,9 @@
     <circle cx="230" cy="305" r="2.5" fill="#D4B8A0" opacity="0.8"/>
 
     <!-- Điểm sáng tinh tế trên cánh hoa -->
-    <ellipse cx="200" cy="220" rx="8" ry="12" fill="#FFFFFF" opacity="0.3" filter="url(#glow)"/>
-    <ellipse cx="155" cy="250" rx="6" ry="10" fill="#FFFFFF" opacity="0.2"/>
-    <ellipse cx="245" cy="250" rx="6" ry="10" fill="#FFFFFF" opacity="0.2"/>
+    <ellipse class="sparkle" cx="200" cy="220" rx="8" ry="12" fill="#FFFFFF" opacity="0.3" filter="url(#glow)" style="animation-delay: 0s;"/>
+    <ellipse class="sparkle" cx="155" cy="250" rx="6" ry="10" fill="#FFFFFF" opacity="0.2" style="animation-delay: 0.5s;"/>
+    <ellipse class="sparkle" cx="245" cy="250" rx="6" ry="10" fill="#FFFFFF" opacity="0.2" style="animation-delay: 1s;"/>
 </svg>
                             </div>
                         </div>
@@ -163,5 +233,103 @@
         </div>
     </div>
 </article>
+
+<script>
+    // Get all petals and flower center
+    const petals = document.querySelectorAll('.petal');
+    const flowerCenter = document.querySelector('.flower-center');
+    const sparkles = document.querySelectorAll('.sparkle');
+    const svgElement = document.querySelector('svg');
+
+    // Mouse move effect
+    svgElement.addEventListener('mousemove', (e) => {
+        const rect = svgElement.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Calculate distance from center (200, 270)
+        const centerX = 200;
+        const centerY = 270;
+        const distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+
+        // If mouse is near the flower (within 150px radius)
+        if (distance < 150) {
+            // Make petals glow
+            petals.forEach((petal, index) => {
+                setTimeout(() => {
+                    petal.style.opacity = '1';
+                    petal.style.filter = 'url(#glow) drop-shadow(0 0 10px rgba(255, 200, 180, 0.8))';
+                }, index * 50);
+            });
+
+            // Make center glow
+            flowerCenter.style.filter = 'url(#softShadow) drop-shadow(0 0 15px rgba(255, 230, 180, 0.9))';
+
+            // Make sparkles more visible
+            sparkles.forEach(sparkle => {
+                sparkle.style.opacity = '0.8';
+            });
+        } else {
+            // Reset to normal
+            petals.forEach(petal => {
+                petal.style.opacity = '';
+                petal.style.filter = 'url(#glow)';
+            });
+
+            flowerCenter.style.filter = 'url(#softShadow)';
+
+            sparkles.forEach(sparkle => {
+                sparkle.style.opacity = '';
+            });
+        }
+    });
+
+    // Mouse leave - reset everything
+    svgElement.addEventListener('mouseleave', () => {
+        petals.forEach(petal => {
+            petal.style.opacity = '';
+            petal.style.filter = 'url(#glow)';
+        });
+
+        flowerCenter.style.filter = 'url(#softShadow)';
+
+        sparkles.forEach(sparkle => {
+            sparkle.style.opacity = '';
+        });
+    });
+
+    // Click effect - create a burst of light
+    svgElement.addEventListener('click', (e) => {
+        const rect = svgElement.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Create temporary sparkle at click position
+        const ns = "http://www.w3.org/2000/svg";
+        const circle = document.createElementNS(ns, "circle");
+        circle.setAttribute("cx", x);
+        circle.setAttribute("cy", y);
+        circle.setAttribute("r", "5");
+        circle.setAttribute("fill", "#FFFFFF");
+        circle.setAttribute("opacity", "1");
+
+        svgElement.appendChild(circle);
+
+        // Animate the sparkle
+        let opacity = 1;
+        let radius = 5;
+        const animate = setInterval(() => {
+            opacity -= 0.05;
+            radius += 2;
+            circle.setAttribute("opacity", opacity);
+            circle.setAttribute("r", radius);
+
+            if (opacity <= 0) {
+                clearInterval(animate);
+                svgElement.removeChild(circle);
+            }
+        }, 30);
+    });
+</script>
 </body>
 </html>
